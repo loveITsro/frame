@@ -1,0 +1,45 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<p:outputLabel style="color:#999; padding-left:100px; position:fixed; display:block;" value=""/> <!--  value=" #{userBean.user.getAuthorities()}" -->
+	
+	<div class="base_page-top_header">
+		<img class="base_page-cern-logo" src="images/cern-logo-64x64.png"
+			alt="CERN" />
+	
+		<h1 class="base_page-app_title">
+			<h:outputText value="#{msg['header.title']}" />
+			<h:outputText value="#{msg['header.version']}" styleClass="version"/>
+		</h1>		
+	</div>
+	<div class="base_page-top_options">
+		<div class="base_page-top_user">
+			<h:form id="base_page-top_user-form">
+				<span class="base_page-top_user-signout"><h:outputText styleClass="ui-icon ui-icon-locked" /><p:commandLink value="#{msg['header.signout']}" action="#{userBean.logout}" ajax="false" /></span>
+				<span class="base_page-top_user-name"><h:outputText styleClass="ui-icon ui-icon-person" /><p:outputLabel value="#{userBean.user.name}"/></span>
+				<span class="base_page-top_locale">
+				<h:outputText styleClass="ui-icon ui-icon-flag" />
+					<h:selectOneMenu value="#{localeBean.language}">
+						<f:selectItem itemValue="en" itemLabel="English" />
+						<f:selectItem itemValue="sk" itemLabel="Slovak" />
+    					<p:ajax oncomplete="beforeReload=true;reload();"/>		           
+					</h:selectOneMenu>
+				</span>
+			</h:form>
+		</div>
+		<div class="base_page-top_menu">
+				<p:commandButton id="topActionMenu" value="#{msg['header.button.goto']}" title="#{msg['header.button.goto.msg']}" icon="ui-icon-triangle-1-s" />
+				<p:overlayPanel id="topActionMenuPanel" for="topActionMenu" hideEffect="fade" appendToBody="true">
+					<h:panelGrid id="topActionMenuPanelButtons" styleClass="base_page-top_menu-action_table" columns="1">
+						<p:button value="#{msg['header.button.home']}" title="#{msg['header.button.home.msg']}"  icon="ui-icon-home" outcome="index" />
+						<p:commandButton value="#{msg['nav.button.reportingtool.msg']}" title="#{msg['nav.button.reportingtool.msg']}" icon="ui-icon-script" 
+							onclick="window.open('#{configBean.getValueByFamilyAndName('SAFETYREPORTING','SAFETYREPORTING_LOCATION')}')" ajax="true" />
+					</h:panelGrid>
+				</p:overlayPanel>
+		</div>
+	</div>
+</ui:composition>

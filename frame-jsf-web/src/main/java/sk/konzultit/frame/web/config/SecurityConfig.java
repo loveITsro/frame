@@ -1,0 +1,36 @@
+package sk.konzultit.frame.web.config;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+
+@Configuration
+@EnableWebSecurity 
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+	 @Override
+	    protected void configure(HttpSecurity http) throws Exception {
+	        http
+	                .authorizeRequests()
+	                .antMatchers("/login.xhtml").anonymous()
+	                .antMatchers("/**").fullyAuthenticated()
+	                .and()
+	                .formLogin().loginPage("/login.xhtml")
+	                .loginProcessingUrl("/appLogin")
+	                .usernameParameter("app_username").passwordParameter("app_password")
+	                .defaultSuccessUrl("/index.xhtml")	
+	                .and()
+	                .logout().logoutSuccessUrl("/login.xhtml").invalidateHttpSession(true).deleteCookies("JSESSIONID")
+	                .and()
+	                .exceptionHandling().accessDeniedPage("/error.xhtml")
+	                .and()
+	                .csrf().disable();
+	    }
+	 
+	@Autowired
+	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+		auth.inMemoryAuthentication().withUser("test").password("test").roles("ADMIN");
+	}	
+} 

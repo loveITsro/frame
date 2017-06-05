@@ -1,0 +1,338 @@
+/* ------------ Structure------------- */
+form{
+	margin-bottom: 0px !important;
+}
+
+.basicPanel{
+	background-color: #FAFAFA !important;
+	margin-bottom: 10px !important;
+}
+
+.noBorderPanel{
+	background-color: #FAFAFA !important;
+	margin: 0px !important;
+	padding: 0px !important;
+	border: none !important;
+}
+
+.basicPanel .ui-panel-titlebar{
+}
+
+.noBorderPanel .ui-panel-content {
+	padding: 0px !important;
+}
+
+
+
+/* ------------ Data Table------------- */
+.safetyEntityTable
+{
+   padding-right:20px !important;
+}
+
+.safetyEntityTable, .safetyEntityGroupTable
+{
+   margin-top:10px !important;
+}
+
+.singleLine
+{
+    text-wrap:none;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.ui-icon-file-excel {
+	
+	background-image: url("../images/excel-logo-16x16.png") !important;
+	background-size: 16px 16px;
+}
+
+.ui-icon-file-pdf {
+	background-image: url("../images/pdf-logo-16x16.png") !important;
+	background-size: 16px 16px;
+}
+
+
+
+/* ------------ Detail Table ------------- */
+.detailTable thead tr {
+    display: none;
+}
+
+.detailTable td{
+	padding: 2px !important;
+	width:auto !important;
+}
+
+
+
+/* ------------ Filter ------------- */
+.filterTable{
+    float:left;
+    margin-left:1%;
+    margin-top:1%;
+}
+
+.filterTable thead tr {
+    display: none;
+}
+
+.filterTable td{
+	background-color: #FFFFFF !important;
+	padding: 2px !important;
+	width:auto !important;
+}
+
+.inUseBackgroundFilterTitle{
+	border: 2px solid orange !important;
+	padding: 2px  !important;
+}
+
+.notInUseBackgroundFilterTitle{
+	border: 2px solid white !important;
+	padding: 2px  !important;
+}
+
+.notCorrectBackgroundFilterTitle{
+	border: 2px solid red !important;
+	padding: 2px  !important;
+}
+
+.clearFilter{
+	width:20px;
+	height:20px;
+}
+
+.clearFilter button{
+	width:20px;
+	height:20px;
+}
+
+.clearFilterIcon{
+	background-image: url("../images/clear_17x17.png") !important;
+}
+
+.filterListString{
+	border-style:solid;
+	border-width:thin;
+	margin-top:10px;
+	margin-left:1%;
+	padding: 0px !important;
+}
+
+
+
+/* ------------ Global ------------- */
+* {
+	font-family: verdana;
+	font-size: 10pt;
+}
+
+.base_page-top_header {
+	float: left;
+}
+
+.base_page-top_options {
+	float: right;
+	text-align: right;
+}
+
+.base_page-top_menu {
+	padding: 8px 5px 0 0;
+}
+
+.base_page-top_menu-action_table button {
+	width: 100%;
+	text-align: left;
+}
+
+.base_page-cern-logo {
+	height: 64px;
+	width: 64px;
+	padding: 5px 5px 5px 8px;
+}
+
+.base_page-app_title {
+	display: inline-block;
+	margin: 0;
+	padding: 0 0 15px 0;
+	vertical-align: bottom;
+	font-size: 28pt;
+	color: #009000;
+	text-shadow: 2px 3px 5px #BBBBBB;
+}
+
+.base_page-app_title .version {
+	display: inline-block;
+	margin: 0;
+	padding: 0 0 15px 5px;
+	vertical-align: bottom;
+	font-size: 10pt;
+	color: #009000;
+	text-shadow: 2px 3px 5px #BBBBBB;
+}
+
+.base_page-top_loading {
+	display: inline-block;
+	margin: 0;
+	padding: 5px 0 0 10px;
+	vertical-align: bottom;
+	font-size: 20pt;
+	color: #009000;
+	text-shadow: 2px 3px 5px #BBBBBB;
+}
+
+
+.base_page-top_user {
+	font-size: 11pt;
+	padding: 5px 0 10px 0;
+}
+
+.base_page-top_user form {
+	margin: 0;
+}
+
+.base_page-top_user .ui-icon {
+	display: inline-block;
+	margin: 0 3px -3px;
+}
+
+.base_page-top_user-signout, .base_page-top_user-name,
+	.base_page-top_locale {
+	padding-right: 5px;
+	padding-left: 10px;
+}
+
+.base_page-top_user-signout a {
+	text-decoration: none;
+}
+
+.base_page-top_user-signout a:hover {
+	text-decoration: underline;
+	color: #0077B3;
+}
+
+.base_page-top_user-name {
+	border-left: 2px dotted darkgray;
+}
+
+.base_page-top_locale {
+	border-left: 2px dotted darkgray;
+}
+
+.base_page-bottom_message {
+	font-size: 10pt;
+	font-family: verdana;
+	padding-right: 10px;
+}
+
+.base_page-bottom_message a {
+	font-size: 10pt;
+	font-family: verdana;
+	padding-right: 10px;
+}
+
+.base_page-bottom_message a:hover {
+	color: #0077B3
+}
+
+.na-message {
+	color: #999999;
+}
+
+.pageTitle {
+	color: #E34A0D;
+	font-size: 20pt;
+	text-shadow: 2px 3px 10px white;
+}
+
+.tag {
+	border-left: 10px solid #EEE; font-variant: small-caps; font-weight: bold;
+	font-size: 0.8em; padding: 0 5px; width: 150px;
+}
+
+.breadcrumbsPanel {
+	background: linear-gradient(#CCEECC, #EEFFEE) !important;
+}
+
+.navigationButton {
+	background: linear-gradient(#ffff5f, #fece2f) !important;
+}
+
+
+/* ------------ Theme overwrite ------------- */
+#filters .ui-autocomplete-multiple-container{
+	width:300px !important;
+}
+#filters .ui-selectcheckboxmenu-label{
+	width:190px !important;
+}
+
+.ui-blockui{
+background-color: white !important;
+background-image: none !important;
+opacity: 0.4 !important;
+}
+
+#south-resizer{
+	background-color: #009000 !important;
+}
+
+#north-resizer{
+	background-color: #009000 !important;
+}
+
+.ui-panel-titlebar .ui-outputlabel{
+	font-size:13pt !important; 
+	font-weight:bold !important; 
+	color: #009000 !important;
+}
+
+
+/* ------------ Inspection table ------------- */
+.inspectionActions-panel .ui-overlaypanel-content {
+	padding: 0.5em !important;
+}
+
+.inspectionActions-table {
+	border: none !important;
+}
+
+.inspectionActions-table tr:hover {
+	border: none;
+}
+
+.inspectionActions-table td {
+	border: none !important;
+	padding: 1px 0 !important;
+}
+
+.inspectionActions-table button {
+	width: 100%;
+	text-align: left;
+}
+
+/* ------------ Primefaces theme overrides ------------- */
+.ui-datatable .ui-datatable-header {
+	text-align: left !important;
+}
+
+
+/* ------------ TEST ------------- */
+.populator {}
+.populator .populator-item { padding: 2px; margin: 2px 0; border:2px solid #fff; border-radius: 6px;
+                             -webkit-transition-property: border-color; -webkit-transition-duration: 1s;
+                             -moz-transition-property: border-color; -moz-transition-duration: 1s;
+                             transition-property: border-color; transition-duration: 1s;}
+
+.populator .populator-item:hover {border-color:#FFDCB2;}
+.populator .populator-item:nth-child(odd){ background: linear-gradient(#CCEECC, #EEFFEE) !important;}
+
+.populator .populator-item h3 { font-family: "Droid Sans"!important; font-size: 14px!important; }
+
+.f_right {  float:right;}
+.f_left {   float:left;}
+.f_clear {  clear: both;}
+

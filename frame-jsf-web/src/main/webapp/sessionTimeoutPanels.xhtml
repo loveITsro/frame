@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:sec="http://www.springframework.org/security/facelets/tags">
+
+	<p:dialog id="timeoutSession"
+		header="#{msg['session.timeout.title']}"
+		widgetVar="timeoutDialog"
+		showEffect="fade" hideEffect="fade"
+		modal="true"
+		width="400"
+		height="110"
+		closable="false"
+		draggable="false"
+		resizable="false"
+		appendToBody="true"
+		onHide="stopCount()"
+		onShow="doTimer()">
+		<p>
+		   <span class="ui-icon ui-icon-alert" style="float: left; margin: 8px 8px 0;"/>
+		   <p:panel>
+		      #{msg['session.timeout.logoffsoon1']}
+		      <span id="dialog-countdown" style="font-weight: bold"></span>
+		      #{msg['session.timeout.logoffsoon2']}
+		   </p:panel>
+		</p>
+		<p style="font-weight: bold;">#{msg['session.timeout.movecursor']}</p>
+	</p:dialog>
+
+	<p:dialog id="expiredSession"
+		header="#{msg['session.expired.title']}"
+		widgetVar="expiredSessionDialog"
+		showEffect="fade" hideEffect="fade"
+		modal="true"
+		width="400"
+		height="110"
+		closable="false"
+		draggable="false"
+		resizable="false"
+		appendToBody="true">
+		<p>
+		   <span class="ui-icon ui-icon-alert" style="float: left; margin: 8px 8px 0;"/>
+		   <p:panel>
+		      #{msg['session.expired.message']}
+		   </p:panel>
+		</p>
+		
+    	<h:link value="#{msg['session.expired.link.label']}" outcome="index.xhtml" />
+
+	</p:dialog>
+</ui:composition>

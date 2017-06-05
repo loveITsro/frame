@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:sec="http://www.springframework.org/security/facelets/tags">
+
+   <h:form prependId="false">
+      <p:idleMonitor timeout="#{session.maxInactiveInterval * 1000 - 65000}">
+		<p:ajax event="idle" onstart="startIdleMonitor();"/>
+        <p:ajax event="active" onstart="stopIdleMonitor();"/>
+      </p:idleMonitor>
+
+      <p:remoteCommand name="keepAlive" actionListener="#{userBean.keepSessionAlive}" />
+   </h:form>
+   <script type="text/javascript">
+      var TIME = 60; // in seconds
+      var countTimer = TIME;
+      var processTimer;
+      var timer_is_on = 0;
+      var session_is_expired = 0;
+      //var redirectPage = "#{request.contextPath}/error/accessDenied.xhtml";
+ 
+      var countDownDiv = "dialog-countdown";
+      var txtCountDown = null;
+      if (!txtCountDown)
+        txtCountDown = document.getElementById(countDownDiv);
+ 
+      function startIdleMonitor() {
+    	 if(session_is_expired == 0){
+	        countTimer = TIME;
+	        txtCountDown.innerHTML = countTimer;
+	        PF('timeoutDialog').show();
+      	}
+      }
+      
+      function stopIdleMonitor() {
+     	 if(session_is_expired == 0){
+     		PF('timeoutDialog').hide();
+       	}
+       }
+      
+      function timedCount() {
+        txtCountDown.innerHTML = countTimer;
+        if (countTimer == 0) {
+            stopCount();
+            session_is_expired = 1;
+            PF('timeoutDialog').hide();
+            PF('expiredSessionDialog').show();
+        }
+        countTimer = countTimer - 1;
+        processTimer = setTimeout("timedCount()", 1000);
+      }
+      
+      function doTimer() {
+        if (!timer_is_on) {
+            timer_is_on = 1;
+            timedCount();
+        }
+      }
+      
+      function stopCount() {
+        clearTimeout(processTimer);
+        timer_is_on = 0;
+        keepAlive();
+      }
+      </script>
+</ui:composition>

@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags"
+	template="./template/template.xhtml">
+
+	<ui:define name="content">
+		<h:form id="form">
+			<p:dataTable var="employee" value="#{employeeListBean.employeeLazyModel}" paginator="true" rows="10" paginatorPosition="bottom"
+				paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+				rowsPerPageTemplate="5,10,15" selectionMode="single" selection="#{employeeListBean.selectedEmployee}" id="employeeTable" lazy="true" styleClass="datatable">
+				
+				<p:ajax event="rowSelect" listener="#{employeeListBean.onRowSelect}" update=":form:employeeDetail" oncomplete="PF('employeeDialog').show()" />
+				
+				<p:column headerText="Id" sortBy="#{employee.id}" filterBy="#{employee.id}">
+					<h:outputText value="#{employee.id}" />
+				</p:column>
+				
+				<p:column headerText="Name:" sortBy="#{employee.name}" filterBy="#{employee.name}">
+					<h:outputText value="#{employee.name}" />
+				</p:column>
+				
+				<p:column headerText="Age:" sortBy="#{employee.age}" filterBy="#{employee.age}">
+					<h:outputText value="#{employee.age}" />
+				</p:column>
+			</p:dataTable>
+
+			<p:dialog header="Employee Detail" widgetVar="employeeDialog" modal="true"
+				showEffect="fade" hideEffect="fade" resizable="false">
+				<p:outputPanel id="employeeDetail" style="text-align:center;">
+					<p:panelGrid columns="2" rendered="#{not empty employeeListBean.selectedEmployee}"
+						columnClasses="label,value">
+						
+						<h:outputText value="Id:" />
+						<h:outputText value="#{employeeListBean.selectedEmployee.id}" />
+
+						<h:outputText value="Name:" />
+						<h:outputText value="#{employeeListBean.selectedEmployee.name}" />
+
+						<h:outputText value="Age:" />
+						<h:outputText value="#{employeeListBean.selectedEmployee.age}" />
+						
+					</p:panelGrid>
+				</p:outputPanel>
+			</p:dialog>
+		</h:form>
+	</ui:define>
+</ui:composition>
