@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags"
+	template="./template/template.xhtml">
+
+	<ui:define name="content">
+		<p:panel id="entityList" header="#{msg['error.title']}" style="margin-bottom:20px" toggleable="true" collapsed="false" toggleSpeed="500" widgetVar="errorPanel" styleClass="basicPanel">
+			<h:outputLabel value="#{msg[title]}" style="font-weight:bold;color: red"/><br />
+			<h:outputLabel value="#{msg[message]}"/><br /><br />
+			<h:outputLabel value="#{exceptionMessage}"/>
+			<p:scrollPanel id="resolversPanel" mode="native" style="width:1200px;height:500px" rendered="#{exceptionStackTrace != null}">
+				#{exceptionStackTrace}
+			</p:scrollPanel>
+			<br />
+			
+			<h:outputText value="#{msg['exception.debug.message']}" />
+			<h:outputText value="#{userBean.user.username}" />
+		</p:panel>
+	</ui:define>
+</ui:composition>
+
+
