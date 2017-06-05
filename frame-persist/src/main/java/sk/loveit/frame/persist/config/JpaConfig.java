@@ -22,7 +22,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@EnableJpaRepositories("sk.konzultit.frame.persist")
+@EnableJpaRepositories("sk.loveit.frame.persist")
 @EnableTransactionManagement
 public class JpaConfig {
 

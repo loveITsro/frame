@@ -5,6 +5,8 @@ import java.time.LocalDate;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class BaseEntity {
@@ -15,10 +17,12 @@ public class BaseEntity {
 
 	private LocalDate created;
 	
+	@ManyToOne @JoinColumn(name = "CREATED_BY")
 	private User createdBy;
 	
 	private LocalDate modified;
 	
+	@ManyToOne @JoinColumn(name = "MODIFIED_BY")
 	private User modifiedBy;
 
 	public Long getId() {

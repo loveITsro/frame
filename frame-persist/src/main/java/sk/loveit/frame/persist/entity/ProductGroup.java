@@ -4,6 +4,9 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class ProductGroup extends BaseEntity{
@@ -14,8 +17,11 @@ public class ProductGroup extends BaseEntity{
 	
 	private String description;
 	
+	@ManyToOne @JoinColumn(name = "COOK_ID")
 	private User cook;
 	
+	@OneToMany
+	@JoinColumn(name = "PRODUCT_ID")
 	private List<Product> products;
 
 	public LocalDateTime getPickupTimeFrom() {

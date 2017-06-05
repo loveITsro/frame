@@ -1,6 +1,8 @@
 package sk.loveit.frame.persist.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class RatingProduct extends BaseEntity{
@@ -13,8 +15,10 @@ public class RatingProduct extends BaseEntity{
 	
 	private Integer valueScore;
 	
+	@ManyToOne @JoinColumn(name = "COOK_ID")
 	private User cook;
 	
+	@ManyToOne @JoinColumn(name = "ORDER_ID")
 	private Order order;
 	
 	public String getDescription() {

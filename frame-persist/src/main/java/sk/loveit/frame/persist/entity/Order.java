@@ -4,15 +4,23 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
 import sk.loveit.frame.persist.enums.OrderStatus;
 
 @Entity
 public class Order extends BaseEntity{
 	
+	@ManyToOne @JoinColumn(name = "CUSTOMER_ID")
 	private User customer;
 	
+	@ManyToOne @JoinColumn(name = "COOK_ID")
 	private User cook;
 
+	@OneToMany
+	@JoinColumn(name = "PRODUCT_ID")
 	private List<Product> products;
 	
 	private BigDecimal price;

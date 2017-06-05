@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import javax.persistence.Entity;
 
 @Entity
-public class Product {
+public class Product extends BaseEntity{
 	
 	private String name;
 	
